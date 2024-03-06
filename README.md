@@ -78,6 +78,8 @@ public static void main(String... args) { // main method, valid
 
 ## packages and imports
 
+> No package name, default package!
+
 - imports included by default (implicity imports):
   - java.lang.* is imported by default, it includes useful classes like System
   - classes within the same package
@@ -85,6 +87,33 @@ public static void main(String... args) { // main method, valid
 - begins java <- comes from JDK
 - br.com.rafaelino => package => br.com.rafaelino.main => child package
 
-- wildcards = * , import all classes under the package, does not work recursively (like import class from a distant package, two dots away)
+- wildcards = * 
+  - import all classes under the package, does not work recursively (like import class from a distant package, two dots away)
   - ex: import java.util.* doesnt import AtormicInteger, because its on java.util.concurennt.atomic.*
-- wildcards does not slow down the program
+  - wildcards does not slow down the program
+  - doesnt work to import methods, like `import java.lang.System.*`
+
+- by having different packages, u can have more than one class with same name
+  - ex: `java.sql.Date` and `java.util.Date`
+  - compile error: `import java.sql.*; import java.util.*`, both have Date class
+  - compile error: `import java.sql.Date; import java.util.Date`, both have Date class
+  - works: `import java.sql.Date; import java.util.*`, explicitly has procedence
+- Can use fully qualified class name, like:
+
+```java
+public class LocalTest {
+  public static void main(String[] args) {
+    java.util.Date data = new java.util.Date(); // fully qualified name
+    System.out.println(data.toString());
+  }
+}
+```
+
+- commands:
+  - javac -d <DIRECTORY> packagea/... packageb/... etc => will create <DIRECTORY> with files.class inside, instead of creating in the package
+  - To run: java -cp <DIRECTORY> packagemain.Main
+  - To run: java -classpath <DIRECTORY> packagemain.Main
+  - To run: java -class-path <DIRECTORY> packagemain.Main
+  - including jars: java -cp ".;/home/dir;/home/somejar.jar" package.MainClass
+
+
