@@ -16,10 +16,15 @@
 - multiline comment = /**/
 - statements = import, for, if, etc => instruction
 
-## Keyworks
+## Keywords
 
 - var: can be used as method name
 - case, new, this, var
+
+
+- final
+  - constant, cannot reassign value
+  - final String[] names = new String[]{"rafael", "yasmin"}; nomes = null; // error!
 
 ## Classes
 
@@ -159,6 +164,57 @@ public class ClassA {
 
 - long someBigInt = 1_________0; // valid
 
+- Object types wrapper classes
+  - Boolean / booleanValue()
+  - Byte, Short, Integer, Long, Float, Double (inherits from Number)
+  - Character / charValue() 
+  - Number abstract: byteValue(), shortValue(), intValue(), longValue(), floatValue(), doubleValue.
+  - max(int num1, int num2), min(int num1, int num2), sun(int num1, int num2)
+
+- Scape characters:
+  - \n = regular string = " , text block = "
+  - \""" = regular string = invalid , text block = """
+  - \"\"\" = regular string = """ , text block = """
+  - Space at the end of line = regular string = Space, text block = ignored
+  - \s = regular string = two spaces , text block = two spaces
+  - \ end of line = regular string = invalid , text block = omit new line
+- text blocks
+
+```java
+String somestring = """ some text """; // does not compile, breakline mandatory
+String anotherstrng = """
+some other text"""; // compile
+```
+
+## Variable (or identifiers)
+
+- rules:
+  - Identifiers: letters, currency symbols ($,¥,€) or underscore (only at the beginning).
+  - cannot start with numbers!
+  - reserved words: const, goto, native, volatile, transient, strictfp
+
+```java
+public boolean checkValue(double $) {
+  boolean result;
+  if ($ > 1222222.31) {
+    result = true;
+  }
+  return result; // compilation error, no default value for result!
+}
+```
+
+
+```java
+double $ = 120.00; // compile!
+double ¥AnotherValue = 1500.123; // also compile!!
+```
+
+- initializing
+  - String s1, s2;
+  - String s3 = "ah", s4 = "bbb"; // must be same type
+  - String s1, s2, s3 = "smassa"; // only last one has been initialized
+  - double value1, double value2; // not legal, only 1 type per statement
+
 # Jars
 
 - creating jar: jar -cvf someJar.jar . "-cvf" stands for --create --verbose --file
@@ -180,3 +236,7 @@ public class ClassA {
 # General knowledge
 
 > Size of boolean? depends on JVM implementation
+
+- `identifier`: name of variable
+
+> Legal, valid, compiles are synonyms in java exam

@@ -5,6 +5,10 @@ public class ClassA {
     System.out.println("construct classAAAA");
  }   
  public void ClassA() {
-    System.out.println("not a constructor, just a method");
+   String someString = """
+   I'm a method! \
+   YES!""";
+   // the "\" in the text block indicates to not break a line.
+   System.out.println(someString);
  }
 }
