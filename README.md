@@ -94,16 +94,16 @@ public static void main(String... args) { // main method, valid
 
 - wildcards = * 
   - import all classes under the package, does not work recursively (like import class from a distant package, two dots away)
-  - ex: import java.util.* doesn't import AtormicInteger, because its on java.util.concurennt.atomic.*
+  - ex: import java.util.* doesn't import AtormicInteger, because its on java.util. concurrent atomic.*
   - wildcards does not slow down the program
-  - doesnt work to import methods, like `import java.lang.System.*`
+  - doesn't work to import methods, like `import java.lang.System.*`
 
 - by having different packages, u can have more than one class with same name
   - ex: `java.sql.Date` and `java.util.Date`
   - compile error: `import java.sql.*; import java.util.*`, both have Date class
   - compile error: `import java.sql.Date; import java.util.Date`, both have Date class
   - works: `import java.sql.Date; import java.util.*`, explicitly has procedence
-- Can use fully qualified class name, like:
+  - Can use the fully qualified class name, like:
 
 ```java
 public class LocalTest {
@@ -192,6 +192,7 @@ some other text"""; // compile
   - Identifiers: letters, currency symbols ($,¥,€) or underscore (only at the beginning).
   - cannot start with numbers!
   - reserved words: const, goto, native, volatile, transient, strictfp
+  - Passing a non-instantiated variable to a method also results in a compilation error
 
 ```java
 public boolean checkValue(double $) {
@@ -201,19 +202,43 @@ public boolean checkValue(double $) {
   }
   return result; // compilation error, no default value for result!
 }
+public void anotherMethod() {
+  double notInstantiatedVar;
+  checkValue(notInstanciatedVar); // compilation error
+}
 ```
-
 
 ```java
 double $ = 120.00; // compile!
 double ¥AnotherValue = 1500.123; // also compile!!
 ```
 
-- initializing
+- multiple initializing
   - String s1, s2;
   - String s3 = "ah", s4 = "bbb"; // must be same type
   - String s1, s2, s3 = "smassa"; // only last one has been initialized
   - double value1, double value2; // not legal, only 1 type per statement
+
+
+## Instance variable (or field)
+
+- class variable = static field
+- instance variable = normal field
+- auto initialization (null for object, zero for numeric values and false for boolean)
+
+## Local variable type inference (`var`)
+
+- infers the type on compilation time, cannot change the type after initialization
+- infers in single line / statement
+- cannot be initialized with `null` but can receive `null` after initialization
+- `var` can be used for class name, package and method
+
+
+## Methods
+
+## Scopes
+
+- each variable declare in a scope ({}), cannot be used in outer scope
 
 # Jars
 
@@ -230,7 +255,20 @@ double ¥AnotherValue = 1500.123; // also compile!!
   5. methods inside classes
 - PIC = package, import, class
 
+# Garbage collector (GC)
 
+- All java object are stored in `heap memory` or free store
+- Object eligible for GC doesnt mean it will be immediately deleted by GC
+- System.gc() do not guaranntee to GC run
+- Object no longer available when:
+  - no references pointing to it
+  - references are out of scope
+
+
+Memory HEAP ( SomeObject, AnotherObject )
+
+SomeObject reference = new SomeObject();
+variable is just a reference
 
 
 # General knowledge
@@ -240,3 +278,5 @@ double ¥AnotherValue = 1500.123; // also compile!!
 - `identifier`: name of variable
 
 > Legal, valid, compiles are synonyms in java exam
+
+

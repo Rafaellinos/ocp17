@@ -6,8 +6,22 @@ public class ClassB {
 
     int numberEggs;
 
+    String name;
+
+    boolean isLucky;
+
+    Boolean isLucky2;
+
     public ClassB() {
         System.out.println("constructor");
+        this.numberEggs = 22;
+    }
+
+    public void printDefaultValue() {
+        System.out.println("default value for numberEggs: " + numberEggs);
+        System.out.println("default value for name: " + name);
+        System.out.println("default value for isLucky: " + isLucky);
+        System.out.println("default value for isLucky2: " + isLucky2);
     }
 
     public static void main(String... args) {
@@ -20,6 +34,8 @@ public class ClassB {
         }
 
         ClassB b = new ClassB();
+
+        b.printDefaultValue();
 
         long someBigInt = 1______________________0L;
         System.out.println(someBigInt);
@@ -36,7 +52,8 @@ public class ClassB {
     }
 
     {// instance initializer. Only works when u create a new instance of this class
-        System.out.println("instance initializer");
+        System.out.println("instance initializer" + this.numberEggs);
+        var name2 = "jonh";
     }
 
     // public boolean checkValue(double $) {
