@@ -232,6 +232,9 @@ double ¥AnotherValue = 1500.123; // also compile!!
 - infers in single line / statement
 - cannot be initialized with `null` but can receive `null` after initialization
 - `var` can be used for class name, package and method
+- var nome1 = "rafael", nome2 = "yasmin"; // not valid
+- var num1 = Long.parseLong("100"); // returns primitive
+- var num2 = Long.valueOf("100"); // returns Long object
 
 
 ## Methods
