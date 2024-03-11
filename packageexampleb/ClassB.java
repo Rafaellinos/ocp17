@@ -53,8 +53,6 @@ public class ClassB {
 
     {// instance initializer. Only works when u create a new instance of this class
         System.out.println("instance initializer" + this.numberEggs);
-        var name2 = "jonh";
-        var day = 1/0;
     }
 
     // public boolean checkValue(double $) {

@@ -72,14 +72,13 @@ public static void main(String... args) { // main method, valid
 }
 ```
 
-## access modifier
+## Access modifier
 
 - public = access to everyone
 
 ## Void return type
 
 - Usage: Good practice for when u change the object by reference/state
-
 
 ## packages and imports
 
@@ -132,7 +131,7 @@ java packageexampleb/ClassB.java packageexamplea/ClassA.java
 
 ## Objects
 
-### Constructors
+## Constructors
 
 ```java
 public class ClassA {
@@ -168,7 +167,7 @@ public class ClassA {
   - Boolean / booleanValue()
   - Byte, Short, Integer, Long, Float, Double (inherits from Number)
   - Character / charValue() 
-  - Number abstract: byteValue(), shortValue(), intValue(), longValue(), floatValue(), doubleValue.
+  - Number abstract: byteValue(), shortValue(), intValue(), longValue(), floatValue(), doubleValue. (returns primitive)
   - max(int num1, int num2), min(int num1, int num2), sun(int num1, int num2)
 
 - Scape characters:
@@ -243,6 +242,86 @@ double ¥AnotherValue = 1500.123; // also compile!!
 
 - each variable declare in a scope ({}), cannot be used in outer scope
 
+## Operators
+
+- Operands = variables used
+- Operator = +, -, *, =
+- Operators:
+  - Unary 1: !a, ~b, +c, -d, +=e, casting, etc
+  - Binary 2
+  - Ternary 3
+
+- If same level of precedence, such as `2 * someVariable - 2 * anotherVariable`, java evaluates from left to right.
+- Parentheses override the precedence
+
+- post-unary operator: expression++ / expression--
+- pre-unary operator: ++expression, --expression
+- shift operators: `>>`, `<<`, `>>>`
+- Logical AND: &
+- Logical exclusive OR: ^
+- Logical inclusive OR: |
+- ternary: boolean expression? return this: or this;
+- assignment operators: =, +=, -=, *=, /=, %=, &=, ^=, |=, <<=, >>=, >>>=
+- binary arithmetic operator: +, -, *, /, % 
+
+### Bitwise complement
+
+- inverts zeros and ones from integers (including short, long, etc)
+- ex: int value = 3; // 0011, int complement = ~value; // 1100 (equals to -4)
+- -1*value-1 to find the bitwise complement
+
+### Negation operator
+
+- reverses the sign of a numeric expression
+- ex: `double something = 2.24; double something2 = -something; // -2.24`
+
+### Increment / Decrement operators
+
+- Pre-increment: ++someVar, --someVar (apply minus or plus AND return new value)
+- Post-increment: someVar++, someVar++ (apply minus or plus AND return old value)
+- ex:
+
+```java
+public class Teste {
+  public static void main(String... args) {
+    int someVar = 1;
+    System.out.println(someVar); // print 1
+    System.out.println(++someVar); // print 2
+    System.out.println(someVar); // print 2
+    System.out.println(someVar--); // print 2
+    System.out.println(someVar); // print 1
+  }
+}
+```
+
+
+### Arithmetic Operators
+
+- includes increment/decrement operators
+- Modulus (remainder) = returns the remainder of the division
+  - integer modulus results in floor value
+
+
+### Rules for Numeric promotion
+
+- Larger is promoted
+  - ex: short vs long, long will prevail
+- Floating point is promoted
+  - ex: double vs long, double will prevail
+- byte, short and char to int
+  - promoted to int if binary arithmetic operator (+, -, %, etc)
+- All operands will end with the same type
+  - the data type of the result will be the promoted operands
+
+
+## Casting
+
+- Smaller to larger is required, throws error if u do not cast
+- Larger to smaller is optional
+- Casting is always on the left side `long value = (long) someInt;`
+- 
+
+
 # Jars
 
 - creating jar: jar -cvf someJar.jar . "-cvf" stands for --create --verbose --file
@@ -281,5 +360,15 @@ variable is just a reference
 - `identifier`: name of variable
 
 > Legal, valid, compiles are synonyms in java exam
+
+> 1 and 0 in java ARE NOT RELATED TO boolean in any way!
+
+> Floor value drops de decimal poins, different than round! floor of 4.0, 4.5, 4.9999 results in 4!
+
+> without L in literal, java will treat like int. Ex: `long value = 12223313232323; //compiler error` 
+
+> Remember, for literal float, aways use "F"/"f", or it will be considerated a double.
+
+> Assign a LARGER value to a smaller data type will result in compiler error without casting explicity. Casting is optional when small to large. `int fur = (int)5`
 
 

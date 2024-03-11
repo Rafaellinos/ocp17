@@ -41,7 +41,7 @@
 17: U can concatenate null with string
 
 19: 
-var num1 = Long.parseLong("100"); // returns primitive
+var num1 = Long.parseLong("100"); // returns primitive long
 var num2 = Long.valueOf("100"); // returns Long object
 
 20: 
