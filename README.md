@@ -319,8 +319,29 @@ public class Teste {
 - Smaller to larger is required, throws error if u do not cast
 - Larger to smaller is optional
 - Casting is always on the left side `long value = (long) someInt;`
-- 
 
+- overflow: number is too large to fit
+- underflow: number too low, like -200 in byte field
+
+```java
+short ten = 10; // <- in theory, 10 is a literal int, but literals works naturally for smaller types (byte, short)
+short three = 3;
+short magicResult = ten * three; // int doesnt fit in short!
+short magicResult2 = 10 * 3; // compile! literals does compile!
+short magicResult3 = ten * 10; // does not compile!
+```
+
+## Compound assignment operators
+
+- +=, -=, *=, /=
+- automatically cast the value for the left-side variable type
+
+```java
+short ten = 10; 
+int three = 3;
+ten = ten * three; // does not compile, trying to fit int into short!
+ten *= three; // compile, compound operator automatically cast!
+```
 
 # Jars
 
@@ -372,3 +393,6 @@ variable is just a reference
 > Assign a LARGER value to a smaller data type will result in compiler error without casting explicity. Casting is optional when small to large. `int fur = (int)5`
 
 
+
+
+# LAST PAGE: 83
