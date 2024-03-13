@@ -343,6 +343,11 @@ ten = ten * three; // does not compile, trying to fit int into short!
 ten *= three; // compile, compound operator automatically cast!
 ```
 
+## Assignment with return value
+
+- example: `float someFloat = 2; double someDouble = (someFloat=3.1L);`
+- example2: `boolean value = false; if (value = true) {System.out.println("will be printed")};`
+
 # Jars
 
 - creating jar: jar -cvf someJar.jar . "-cvf" stands for --create --verbose --file
@@ -391,8 +396,5 @@ variable is just a reference
 > Remember, for literal float, aways use "F"/"f", or it will be considerated a double.
 
 > Assign a LARGER value to a smaller data type will result in compiler error without casting explicity. Casting is optional when small to large. `int fur = (int)5`
-
-
-
 
 # LAST PAGE: 83
