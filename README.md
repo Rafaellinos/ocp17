@@ -348,6 +348,39 @@ ten *= three; // compile, compound operator automatically cast!
 - example: `float someFloat = 2; double someDouble = (someFloat=3.1L);`
 - example2: `boolean value = false; if (value = true) {System.out.println("will be printed")};`
 
+## Comparing Operators
+
+- cannot compare different types, like: true ==3, false != "string"
+- References are equals only if pointing to same object. like:
+
+```java
+{
+    var test1 = new File("someFile.txt"); 
+    var test2 = new File("someFile.txt");
+    var test3 = test1;
+    System.out.println(test1 == test2); // false
+    System.out.println(test1 == test3); // true
+    System.out.println(null == null); // true
+}
+```
+
+- instanceof Object => compare class, interface, record, enum, annotation
+- instanceof CANNOT COMPILE in case of incompatible types, like `(number = Long.valueOf(1)) instanceof String`
+- comparing with instanceof with null always results in false, event if the reference is `null`
+- cannot use null in the right side of instanceof, even for references
+    - {null instanceof null // does not compile}
+ 
+## Logical operators
+
+- & AND
+- | OR inclusive
+- ^ OR exclusive (only if operands are different, true ^ false = true, false ^ false = false)
+
+## Conditional operators (short-circuit operators)
+
+- && AND (if left is false, the rest will not be evaluated)
+- || OR (if the left side is true, the rest will not be evaluated)
+
 # Jars
 
 - creating jar: jar -cvf someJar.jar . "-cvf" stands for --create --verbose --file
