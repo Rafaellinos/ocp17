@@ -61,3 +61,23 @@ A is incorrect because Amount is not amount and will not compile in print statem
 A, D.  
 
 float temp = 50.0; "F" or "f" is required for float. Without "F", is a double and it not fit in float.
+
+
+## chapter 2, Operators
+
+
+h = 1
+w = 3
+
+z = 
+
+- 1: A,D,G?
+- 2: A,B,i
+- 3: B,C,F
+- 4: B
+- 5: B, D, 
+- 6: F
+- 7: C
+- 8: A
+- 9: A, D, E
+- 10: G

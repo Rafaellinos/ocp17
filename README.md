@@ -372,9 +372,14 @@ ten *= three; // compile, compound operator automatically cast!
  
 ## Logical operators
 
-- & AND
+- & AND (check both sides of expression)
 - | OR inclusive
-- ^ OR exclusive (only if operands are different, true ^ false = true, false ^ false = false)
+- ^ OR exclusive (only if operands are idifferent, true ^ false = true, false ^ false = false)
+
+```java
+int age = 18;
+boolean isAdult = (age <= 18) || (--age <= 18); // --age wont happen, only if use "|"
+```
 
 ## Conditional operators (short-circuit operators)
 
@@ -429,5 +434,7 @@ variable is just a reference
 > Remember, for literal float, aways use "F"/"f", or it will be considerated a double.
 
 > Assign a LARGER value to a smaller data type will result in compiler error without casting explicity. Casting is optional when small to large. `int fur = (int)5`
+
+> System.out.print() // call Object.toString under the hood
 
 # LAST PAGE: 83
