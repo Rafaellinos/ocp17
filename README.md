@@ -437,4 +437,4 @@ variable is just a reference
 
 > System.out.print() // call Object.toString under the hood
 
-# LAST PAGE: 83
+> U can assign integer value into floting value.

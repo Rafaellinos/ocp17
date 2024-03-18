@@ -65,19 +65,32 @@ float temp = 50.0; "F" or "f" is required for float. Without "F", is a double an
 
 ## chapter 2, Operators
 
+- unary vs binary operators???
 
-h = 1
-w = 3
+> U can return Intergers value to floating value. Like double receiving long.
 
-z = 
+- 66%
 
-- 1: A,D,G?
-- 2: A,B,i
-- 3: B,C,F
-- 4: B
-- 5: B, D, 
-- 6: F
-- 7: C
-- 8: A
-- 9: A, D, E
-- 10: G
+- V 1: A,D,G
+- V 2: A,B,D
+- X 3: B,C,F - B,C,D,F.
+- V 4: B
+- X 5: B, D, - A,C 
+- V 6: F
+- X 7: C - D
+- V 8: A
+- V 9: A, D, E
+- V 10: G
+- V 11: D   
+- V 12: D 
+- V 13: F 
+- V 14: B, E, G   
+- V 15: D, 
+- X 16: C - B 
+- X 17: G - C, F 
+- V 18: C 
+- X 19: E, B - B, F
+- V 20: A, E, D 
+- X 21: F - E  
+
+
