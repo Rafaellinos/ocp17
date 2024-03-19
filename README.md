@@ -386,6 +386,61 @@ boolean isAdult = (age <= 18) || (--age <= 18); // --age wont happen, only if us
 - && AND (if left is false, the rest will not be evaluated)
 - || OR (if the left side is true, the rest will not be evaluated)
 
+
+# Control flow / Decisions / If else for
+
+- if statement:
+    - only if boolean extression evaluates to true
+    - without brances, only the next statement will be executed within the if
+        - ex: `if (isAccountSuspended) blockMoney(); log.info("something")` something will be always logged
+    - `int someInfo = 1; if(someInfo) {}` this code wont compile, only boolean expressions
+
+
+## Pattern variable
+
+- avoid boilerplate code
+
+```java
+public class Main {
+  public static void main(String... args) {
+   Number number = 5;
+   checkIfInt(number);
+   }
+
+  void checkIfInt(Number number) {
+    if (number instanceof Integer) {
+        System.out.println("is integer!");
+        Integer data = (Integer) number; // will compile
+    }
+  }
+
+  // pattern variable
+  void checkIfIntShortSintax(Number number) {
+    //if (number instanceof final Integer data) { can be final 
+    //if (number instanceof final Integer data && data.compareTo(12)>5) { can be used in sequence  
+
+    if (number instanceof Integer data) { // will cast to Integer and assign data
+        System.out.println("is integer!");
+    }
+  }
+
+}
+```
+
+
+> pattern variable aplies :warning: ONLY to subtype. `Integer value=11;if(value instanceof Integer data);` <- will not compile
+
+> Becareful with flow scaping :warning: 
+> `if(number instanceof Integer data || data.compareTo(1)<0);`
+> <- this code wont compile, because the OR will try to evaluate the data.compare, the compile cannot guaranntee the type
+
+
+## Switch statement
+
+
+
+
+
 # Jars
 
 - creating jar: jar -cvf someJar.jar . "-cvf" stands for --create --verbose --file
