@@ -437,8 +437,57 @@ public class Main {
 
 ## Switch statement
 
+- if not default provided nad not case match, nothing will happen
+- if no `break;` provided, the entiry switch will be executed from first match until reachs a break, including default
+- int, byte, short, char, String, enum and vars of previous types are valid. Respectives objects are also valid;
+    - boolean, float, double arent permited in switch
+- switch accepts :warning: literal, enum constants or final constants variables of same type
+- Case options are only valid if: :warning: final + literal, enum or literal 
 
 
+```java
+final int b = 22;
+int f = 22;
+switch (b) {
+    case f: // does not compile! only if final
+    case 7*8: // will compile! literal is known by the compiler
+}
+```
+
+
+```java
+void printDayOfWeek(int day) {
+  switch (day) { // parentheses is mandatory
+    case 0:
+       System.out.println("domingo");
+    break;
+    
+    case 1, 2: 
+       // case 1: 2: System.out.println("something") will not compile, "," necessary
+       // case 1: case 2: .... will compile
+       System.out.println("segunda ou terca");
+
+    } // braces mandatory
+
+  switch (day) {} // this is valid
+
+```
+
+## Switch case expressions (java 14)
+
+- avoid boilerplate from classic switch statements
+
+```java
+int someVariable = 21;
+// return assignment is optional
+int result = switch (someVariable) {
+  case 22 -> 5; // ";" required
+  case 23, 24 -> {
+    yield 6; // yield required in case of block of code
+  }
+  default -> 0;
+}
+```
 
 
 # Jars
