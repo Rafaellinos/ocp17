@@ -437,7 +437,7 @@ public class Main {
 
 ## Switch statement
 
-- if not default provided nad not case match, nothing will happen
+- if not default provided and not case match, nothing will happen
 - if no `break;` provided, the entiry switch will be executed from first match until reachs a break, including default
 - int, byte, short, char, String, enum and vars of previous types are valid. Respectives objects are also valid;
     - boolean, float, double arent permited in switch
@@ -476,6 +476,13 @@ void printDayOfWeek(int day) {
 ## Switch case expressions (java 14)
 
 - avoid boilerplate from classic switch statements
+- Can return a value OR not
+- Cannot mix return void and return some value and type.
+- default case is required if not all cases covered OR no value is returned
+    - for enum, covering all cases doesnt required a default case
+    - if u add a new enum, the switch case without a default case will failt to compile
+- returned data must be consistent in size, can return a short to a int, because it fits
+
 
 ```java
 int someVariable = 21;
@@ -486,9 +493,24 @@ int result = switch (someVariable) {
     yield 6; // yield required in case of block of code
   }
   default -> 0;
-}
+}; // semicolumn at the end is mandatory
 ```
 
+## Loops (while, do/while, for, enhanced for)
+
+- while
+    - while (booleanExpression) {} <- structure
+    - braces are optional for a sinle statement
+- do/while
+    - at least once executed 
+- for loop (classic)
+    - for (initialization; booleanExpression, update) {} <- structure
+    - braces are for single statement
+- enhanced for
+    - for (dataType instance : collection) {} <- structure
+    - braces are optional for a single statement
+    - for (; ;) {sout("111")} <- it does compile!
+    - for () {} <- doent compile :/
 
 # Jars
 

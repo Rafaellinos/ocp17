@@ -22,7 +22,6 @@ public class RandomTests {
         System.out.println("segunda ou terca");
       default:
         System.out.println("dia invalido!");
-
     }
 
   }
@@ -31,13 +30,14 @@ public class RandomTests {
     var valueToAdd = someVariable <= 2 ? 2 : 0; 
     //someVariable = someVariable <= 2 ? (someVariable += 20+2) : (someVariable += 20);
     System.out.println(valueToAdd);
-    System.out.println(someVariable);    
+    System.out.println(someVariable);
     return switch ((someVariable += 20 + valueToAdd)) {
       case 22 -> 5; // ";" required
       case 23, 24 -> {   
         yield 6; // yield required in case of return
       }
-      default -> 0;
+      //case 99 -> System.out.println("ah"); this wont work, cannot mix return types (void in this case)
+      default -> 0; // default is required, not all cases is covered
     };
   } 
 }
