@@ -496,21 +496,38 @@ int result = switch (someVariable) {
 }; // semicolumn at the end is mandatory
 ```
 
-## Loops (while, do/while, for, enhanced for)
+## Loops (while, do/while, for, enhanced for (for each))
 
 - while
     - while (booleanExpression) {} <- structure
     - braces are optional for a sinle statement
 - do/while
-    - at least once executed 
+    - at least once executed
+    - `int someInt = 0; do someInt; while (someInt <10);` <- this is valid!
 - for loop (classic)
     - for (initialization; booleanExpression, update) {} <- structure
     - braces are for single statement
-- enhanced for
+- enhanced for 
     - for (dataType instance : collection) {} <- structure
     - braces are optional for a single statement
     - for (; ;) {sout("111")} <- it does compile!
     - for () {} <- doent compile :/
+    - :warning: works with: java array, implements java.lang.Iterable
+
+
+- adding multiple terms is valid in for loops.
+    - e.g. for (int y=1, z=4; y < 7 && z != 99; y++) {}
+
+
+## Labels (if, switch, loops)
+
+- labels are used to mark some statement
+- SNAKE_CASE
+- e.g. OUTER_LOOP: for(int[] somearray: matrixArray) { INNER_LOOP: for(int i=0...)}
+- e.g. 2 SOME_IF: if(someInt > 10) SOME_BLOCK: {someInt++;}
+- u can use `break` in labels, like: `break OUTER_LOOP;`
+- :warning: without the label (optional), `break` will end the closest loop
+
 
 # Jars
 
@@ -564,3 +581,9 @@ variable is just a reference
 > System.out.print() // call Object.toString under the hood
 
 > U can assign integer value into floting value.
+
+
+> char[] charArray = new char[]{'a'}; for (int x : charArray) System.out.println(x); this is valid,
+> because char can be cast to int, float and double
+
+
