@@ -9,8 +9,24 @@ public class RandomTests {
     r.printDayOfWeek(new Random().nextInt(3));
     var r1 = r.printDayOfWeekSwitchExpression(new Random().nextInt(6));
     System.out.println("" + r1);
+    SOME_LABEL: if (r1 > 0)
+       ANOTHER_LABEL: {
+          System.out.println("aaaaaa");
+    }
+    int[] a = null;
+    System.out.println(findItem(new int[]{1,2,3}, 99));
   }
+  
 
+  final static int[] findItem(int[] items, int v) {
+    for (int i : items) {
+      if (i == v) {
+        int[] res = new int[]{i,v};
+        return res;
+      }
+    }
+    return null;
+  }
 
   final void printDayOfWeek(int day) {
     day++;
@@ -41,7 +57,4 @@ public class RandomTests {
     };
   } 
 }
-
-
-
 

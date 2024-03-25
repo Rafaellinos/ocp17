@@ -528,6 +528,12 @@ int result = switch (someVariable) {
 - u can use `break` in labels, like: `break OUTER_LOOP;`
 - :warning: without the label (optional), `break` will end the closest loop
 
+## Continue statment
+
+- can be used with labels aswell
+- `continue SOME_LABEL;`
+- continue goes to the nearest boolean expression, unless u use labels
+
 
 # Jars
 
@@ -586,4 +592,11 @@ variable is just a reference
 > char[] charArray = new char[]{'a'}; for (int x : charArray) System.out.println(x); this is valid,
 > because char can be cast to int, float and double
 
+> char++ goes the the nest letter in alphabet. `char k = 'a'; a++; // result == 'b'`
 
+
+> classic arrays, like int[] can receive null
+
+> :warning: code after continue, break and return will not compile, even with with LABELs. Reason: unreacheble code
+
+> :warning: switch cannot be float, double or boolean

@@ -93,4 +93,37 @@ float temp = 50.0; "F" or "f" is required for float. Without "F", is a double an
 - V 20: A, E, D 
 - X 21: F - E  
 
+## chapter 3, for loops, switch
+
+
+- X 1: A, B, E, F - A, B, C, E, F, G cannot have long in switch
+- X 2: A - B 
+- V 3: A, D, F, H  
+- X 4: C - F 
+- V 5: E 
+- X 6: C, A, D, E - C, D, E  
+- X 7: B, C, D - B, D
+- V 8: G 
+- X 9: C - B,C,E 
+- V 10: E
+- V 11: A   
+- V 12: C 
+- V 13: G 
+- V 14: B,D,F  
+- V 15: F
+- V 16: A, B,D, 
+- X 17: G - B,E 
+- X 18: C, D, E - C,E
+- V 19: E 
+- X 20: E - A, E
+- V 21: E  
+- X 22: F - E   
+- X 23: A - F  
+- X 24: A, D, E - G  
+- X 25: F - D  
+- V 26: F
+- V 27: F 
+- X 28: B - F 
+- X 29: D - C
+
 
