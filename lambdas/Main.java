@@ -26,4 +26,9 @@ public class Main {
     }
   }
 
+  public boolean equals(int a, int b, String f, boolean jjj){
+    return false;
+  }
+
+
 }
