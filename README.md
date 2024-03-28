@@ -131,6 +131,13 @@ java packageexampleb/ClassB.java packageexamplea/ClassA.java
 
 ## Objects
 
+- All classes inherit Object by default
+- Methods in Object:
+    - String toString();
+    - boolean equals(Object);
+    - int hashCode();
+- Declaring a method with signature `int toString()` wont compile, abstract or not
+
 ## Constructors
 
 ```java
