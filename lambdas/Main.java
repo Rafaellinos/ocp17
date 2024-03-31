@@ -11,7 +11,9 @@ public class Main {
     animal.add(new RecordAnimal("Lion", false, true));
 
 
-    print(animal, a -> a.isMale());
+    print(animal, RecordAnimal::isMale);
+    //print(animal, r -> r.isMale()); // same as
+
 
   }
 
@@ -21,7 +23,7 @@ public class Main {
       if (tester.check(a)) {
         System.out.println(a);
       } else {
-        System.out.println("\"" + a.name() + "\" did not pass to the test!");
+        System.out.println("\"" + a.name() + "\" did not pass to the testtt!");
       }
     }
   }

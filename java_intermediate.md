@@ -48,7 +48,19 @@
 
 - Can be use to make a reference to a method that has the same type of return AND parameters
 
+
+### For static reference vs Instance reference
+
+- java treats static and instance reference differently.
+- e.g.: `String::toUpperCase` will work, but `someStrIntance::toUpperCase` will not
+    - The first case does compile, because it matches the signature: void doSomethindWithString(Sring), receives method reference for string
+    - The last case doesnt compile, does not specifies the target object like `String`
+
+
+
+
 ```java
+@FunctionalInterface
 public interface SomeInterface {
     void doSomethindWithString(String string);
 }
@@ -56,6 +68,22 @@ public interface SomeInterface {
 {
     SomeInterface a = System.out::println; 
     // valid, java knows by the context that the println has the same signature
+    a.doSomethindWithString("somestr"); // will print "somestr"
+}
+
+{
+    import java.lang.Math;
+
+    SomeInterface b = Math::max; // not compile, 2 args number
+    SomeInterface c = String::toUpperCase; // will compile, but does not return
+    
+    var someStr = "I";
+    
+    SomeInterface d = someStr::toUpperCase; 
+    // does not compile, toUpperCase has two overloads: String toUpperCase() and String toUpperCase(Locale)
+    // the interface expects a method reference that receives a string.
+
+    SomeInterface e = someStr::endsWith; // compile
 }
 ```
 
