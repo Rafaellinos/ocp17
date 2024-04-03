@@ -46,7 +46,42 @@
     - instance methods (object or to be determined)
     - Constructors
 
-- Can be use to make a reference to a method that has the same type of return AND parameters
+- Can be use to make a reference to a method that has the same type of parameters
+    - AND u cannot pass arguments to it
+
+
+### Types of method references
+
+> Consider the example bellow
+
+```java
+@FunctionalInterface
+public interface SomeInterface {
+    void doSomethindWithString(String string);
+}
+```
+
+- static method
+    - `String::valueOf` <- valueOf ia a static method
+- Instance methods on a particular object
+    - `someStrInstance::startsWith` <- same as `someStrInstance = "a"; SomeInterface si = s -> someStrInstance.startsWith(s);`
+- Instance methods on a parameter to be determined at runtime
+    - `String::toUpperCase` <- toUpperCase will be applied in the String
+    - `toUpperCase` is a instance method, but the String in the left side indicates the parameter match
+    - parameter match: String::toUpperCase <- String -> void doSomethindWithString(String str)
+    - :warning: can use to combine arguments, being the first the parameter and the second, the instance to be checked.
+        - e.g.: `interface StringChecker { boolean check(String text, String prefix)};`
+        - ... : `StringChecker a = String::startsWith; a.check("rafael", "a"); // returns true`
+- Constructurs
+    - use `new` keyword combined with class name to create a new object.
+    - e.g.: `String::new;`
+
+| Type                         | Left Side  | right side           | example            |
+| ---------------------------- | ---------- | -------------------- | ------------------ |
+| static method                | Class name | Static method name   | String::valueOf    |
+| instance method for object   | instance   | instance method name | String::startsWith |
+| instance method as parameter | class name | instance method name | String::isEmpty    |
+| Constructor                  | Class name | new keyword          | String::new        |
 
 
 ### For static reference vs Instance reference
@@ -75,15 +110,15 @@ public interface SomeInterface {
     import java.lang.Math;
 
     SomeInterface b = Math::max; // not compile, 2 args number
-    SomeInterface c = String::toUpperCase; // will compile, but does not return
+    SomeInterface c = String::toUpperCase; // will compile, but does not return anything
     
     var someStr = "I";
     
     SomeInterface d = someStr::toUpperCase; 
     // does not compile, toUpperCase has two overloads: String toUpperCase() and String toUpperCase(Locale)
-    // the interface expects a method reference that receives a string.
+    // none of these will work, unless use the static reference String:toUpperCase;
 
-    SomeInterface e = someStr::endsWith; // compile
+    SomeInterface e = someStr::endsWith; // compile, endsWith receives a parameter String
 }
 ```
 
