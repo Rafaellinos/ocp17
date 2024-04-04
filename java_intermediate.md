@@ -92,8 +92,6 @@ public interface SomeInterface {
     - The last case doesnt compile, does not specifies the target object like `String`
 
 
-
-
 ```java
 @FunctionalInterface
 public interface SomeInterface {
@@ -110,17 +108,47 @@ public interface SomeInterface {
     import java.lang.Math;
 
     SomeInterface b = Math::max; // not compile, 2 args number
-    SomeInterface c = String::toUpperCase; // will compile, but does not return anything
+    SomeInterface c = String::toUpperCase; 
+        // will compile, but does not return anything. Using method reference as parameter
     
     var someStr = "I";
     
     SomeInterface d = someStr::toUpperCase; 
     // does not compile, toUpperCase has two overloads: String toUpperCase() and String toUpperCase(Locale)
-    // none of these will work, unless use the static reference String:toUpperCase;
+    // none of these will work, these methods expect Locale OR no params.
+    // will be treaded as 'instance method for object'
 
-    SomeInterface e = someStr::endsWith; // compile, endsWith receives a parameter String
+    SomeInterface e = someStr::endsWith; // compile. same as: s -> somestr.endsWith(s);
 }
 ```
+
+### Functional interfaces
+
+- Supplier<T>
+    - T get()
+    - useful for getting some value without parameters, often getting something from the local scope
+    - e.g.: `Supplier<Person> getPersonFullName = p -> p.getFirstName()+p.getLastName();`
+    - :warning: `BiSupllier` does not exist
+- Consumer<T>
+    - void accept(T)
+    - do something with the generic parameter and not return. Changing a method by reference for exemple.
+    - e.g.: `BiConsumer<String, Object> wrapperPut = (s, o) -> map.put(s,o);`
+    - e.g.2: `Consumer<String> print = System.out::println;`
+- Predicate<T>
+    - boolean test(T)
+    - filter, test, or match some generic type.
+    - e.g.: `Predicate<Animal> isTigger = a -> a.getName().equals("Tigger");`
+    - e.g.2: `BiPredicate<Animal, Animal> sameAnime = (a1, a2) -> a1.getName().equals(a2.getName());`
+- Function<T, R>
+    - R apply(T)
+    - anonymous functions
+    - e.g.:
+- UnarityOperator<T>
+    - T apply(T)
+
+
+> BuiltIns$$ (the $$ means that this class exists only in memory)
+
 
 # Streams
 
