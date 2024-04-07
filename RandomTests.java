@@ -1,6 +1,8 @@
 
 
 import java.util.Random;
+import java.lang.System;
+import java.util.function.*;
 
 
 public class RandomTests {
@@ -15,6 +17,14 @@ public class RandomTests {
     }
     int[] a = null;
     System.out.println(findItem(new int[]{1,2,3}, 99));
+
+    String name = "Jonh";
+
+    Predicate<String> checkName = n -> {
+        return name.equalsIgnoreCase(n);
+    };
+    name = "rafael"; // wont compile, name is not final or effectively final 
+
   }
   
 

@@ -14,6 +14,8 @@
     - only `default` method in interface = not valid SAM
     - :warning: methods that inherits from `Object` = not valid SAM
         - methods like: toString(), equals() and hashCode()
+- Valid methods/functions in SAM
+    - default, private, static, private static
 
 - Valid lambdas
     - `(RecordAnimal a) -> {return a.isMale();}`
@@ -22,6 +24,16 @@
     - `s -> {}` this is valid if interface returns void
     - `() -> true` this is valid if interface has no parameters
     - `(String x, String y) -> x == y`
+    - `Predicate<String> toTest = p -> true`
+    - `Predicate<String> toTest = (var p) -> true`
+    - `Predicate<String> toTest = (String p) -> true`
+    - `BinaryOperator<Integer> sortFunc = (final var x, @Deprecated var y) -> x.compareTo(y);`
+- Invalid lambdas
+    - To be valid: Without types, With types OR with var. Must be only one of these 3
+    - `(var x, y) -> "hello"` must specify for x and y or none
+    - `(var x, Integer y) -> x+y` cannot mix types
+    - `(String x, var y, Interger z) -> true` mixed types
+    - `(Integer x, y) -> "Darth Valdir"` mixed types, wont compile
 
 - @FunctionalInterface
     - The annotation does not compile with more than one abstract method
@@ -122,7 +134,7 @@ public interface SomeInterface {
 }
 ```
 
-### Functional interfaces
+## Functional interfaces
 
 - Supplier<T>
     - T get()
@@ -134,20 +146,96 @@ public interface SomeInterface {
     - do something with the generic parameter and not return. Changing a method by reference for exemple.
     - e.g.: `BiConsumer<String, Object> wrapperPut = (s, o) -> map.put(s,o);`
     - e.g.2: `Consumer<String> print = System.out::println;`
+    - default methods:
+        - andThen(Consumer<T>)
 - Predicate<T>
-    - boolean test(T)
+    - boolean test(T) :warning: returns a boolean primitive and not object
     - filter, test, or match some generic type.
     - e.g.: `Predicate<Animal> isTigger = a -> a.getName().equals("Tigger");`
     - e.g.2: `BiPredicate<Animal, Animal> sameAnime = (a1, a2) -> a1.getName().equals(a2.getName());`
+    - default methods:
+        - and(Predicate<T>)
+        - negate(void)
+        - or(Predicate<T>)
 - Function<T, R>
     - R apply(T)
     - anonymous functions
-    - e.g.:
+    - e.g.: `Function<Person, Document> getFormattedDocu = p -> DocumentUtils.format(p.getDocument());`
+    - default methods:
+        - andThen(Function<T, R>) // after
+        - compose(Function<T, R>) // before
 - UnarityOperator<T>
     - T apply(T)
 
+## Functional Interfaces for primities
+
+> most for int, long and double
+
+- booleanSupplier.getAsBoolean (Returns primitive boolean)
+- DoubleSupplier getAsDouble
+- IntSupplier getAsInt
+- LongSupplier getAsLong
+
+- DoubleConsumer . accept
+- IntConsumer
+- LongConsumer
+
+- DoublePredicate . test
+- IntPredicate
+- LongPredicate
+
+- DoubleFunction<R> . apply
+- IntFunction<R>
+- LongFunction
+
+- DoubleUnaryOperator . applyAsDouble
+- IntUnaryOperator . applyAsInt
+- LongBinaryOperator . applyAsLong
+
+## Functional interfaces for converting (specific)
+
+> Most for int, long and double
+
+- ToDoubleFunction<T> applyAsDouble
+    - e.g. `ToDoubleFunction<String> makeDouble = Double::valueOf; makeDouble.applyAsDouble("123");`
+- ToIntFunction<T>
+- ToLongFunction<T
+
+- DoubleToIntFunction applyAsInt
+- DoubleToLongFunction applyAsLong
+- IntToDoubleFunction
+- IntToLongFunction
+- LongToDoubleFunction applyAsDouble
+- LongToIntFunction
+
 
 > BuiltIns$$ (the $$ means that this class exists only in memory)
+
+## Variables allowed in lambda scope
+
+- instance variable
+- static variable
+- local variable (only if final or effectively final [no reasignment] )
+- method parameter (only if final or effectively final [no reasignment])
+- lambda parameter
+
+```java
+// be aware, even if the reasignment happens AFTER, i still wont compile
+public class Main {
+
+    public static void main(String... args) {
+        
+        String name = "Jonh";
+
+        Predicate<String> checkName = n -> {
+            return name.equalsIgnoreCase(n);
+        };
+        name = "rafael"; // wont compile, name is not final or effectively final 
+
+    }
+
+}
+```
 
 
 # Streams
