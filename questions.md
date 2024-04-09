@@ -269,17 +269,51 @@ Trans, train,
 - V 8: E
 - V 9: A, F,  
 - V 10: A, B, C
-- V  11: D    
+- V 11: D    
 - V 12: A  
 - V 13: E 
-- X  14: B, D, F, - B, D  
-- X 15: C, B, 
+- X 14: B, D, F, - B, D  
+- X 15: C, B, - A, F
 - V 16: C 
 - V 17: C 
 - X 18: B, E, G - B, F, G
 - X 19: B, C, F - F 
 - V 20: E
 - X 21: F, E - A, E, F
+
+------
+- 7:
+B is incorrect because the code does compile.
+
+- 14:
+Option F is incorrect because the variable declaration requires a semicolon (;) after it.
+
+- 15:
+A, F.  
+
+> C is incorrect because p is already declared within the scope.
+
+> B is incorrect because the variable age isnt final or efective final
+
+> A is correct since p is accessible within the scope
+
+> F is correct because h became the Hyena passed as parameter
+
+- 18:
+
+> F is correct because Supplier<String> is used for String::new
+
+> E is incorrect because Predicate<String> doesnt fit any blank space
+
+- 19:
+
+> B and C is incorrect because "s" is already defined within the scope
+
+
+- 21
+
+> A is valid. int hashCode() does not count because it is the same from
+> Object().hashCode. int hashCode(String input); makes the interface a valid SAM
 
 # Chapter 9 - Collections and Generics
 
