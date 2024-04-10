@@ -237,6 +237,54 @@ public class Main {
 }
 ```
 
+# Collections and generis
+
+> JAva collections framework, java.util
+
+- List
+    - Allow duplicates, index
+    - Implementation
+        - ArrayList
+        - LinkedList
+- Set
+    - No duplicates
+    - Implementation
+        - Hashset
+        - TreeSet
+- Queue
+    - processing order. 
+    - Deque subinterface allow access both ends
+    - Implementation
+        - Deque, LinkedList
+- Map (Do not implement Collection interface, but skill in collections framework)
+    - key, value
+    - do not allow duplicate keys
+
+
+- methods:
+    - boolean add(E element)
+        - set.add("one"); // true set.add("one"); false
+    - boolean remove(Object object)
+        - someList.remove("<NONE_EXISTING_ITEM"); false
+    - boolean isEmpty() 
+    - int size()
+    - void clear() 
+        - discart all elements in the collection
+    - boolean contains(Object object)
+        - someList.contains("<NONE_EXISTING_ITEM"); false
+    - boolean removeIf(Predicate<? super E> filter)
+        - expects a lambda/Implementation to filter
+
+####### Pag 469
+
+- Diamont operator <>
+    - Right side can be omited (inferred)
+
+- Comparator
+- Comparable
+-
+
+
 
 # Streams
 
