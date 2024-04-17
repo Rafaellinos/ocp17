@@ -52,8 +52,8 @@
 - same as lambdas in runtime
 - formats:
   - static methods
-    - instance methods (object or to be determined)
-    - Constructors
+  - instance methods (object or to be determined)
+  - Constructors
 
 - Can be use to make a reference to a method that has the same type of parameters
   - AND u cannot pass arguments to it
@@ -76,10 +76,10 @@ public interface SomeInterface {
 - Instance methods on a parameter to be determined at runtime
   - `String::toUpperCase` <- toUpperCase will be applied in the String
   - `toUpperCase` is a instance method, but the String in the left side indicates the parameter match
-    - parameter match: String::toUpperCase <- String -> void doSomethindWithString(String str)
-    - :warning: can use to combine arguments, being the first the parameter and the second, the instance to be checked.
-      - e.g.: `interface StringChecker { boolean check(String text, String prefix)};`
-        - ... : `StringChecker a = String::startsWith; a.check("rafael", "a"); // returns true`
+  - parameter match: String::toUpperCase <- String -> void doSomethindWithString(String str)
+  - :warning: can use to combine arguments, being the first the parameter and the second, the instance to be checked.
+  - e.g.: `interface StringChecker { boolean check(String text, String prefix)};`
+  - ... : `StringChecker a = String::startsWith; a.check("rafael", "a"); // returns true`
 - Constructurs
   - use `new` keyword combined with class name to create a new object.
   - e.g.: `String::new;`
@@ -234,6 +234,11 @@ public class Main {
 
 > Java collections framework, java.util
 
+- Data structures basic
+  - stack = LIFO = e.g.: pile of plates
+  - queue = FIFO = e.g.: Queue to buy tickets to some concert
+  - list = index based
+
 - List
   - Allow duplicates, index, ordered
     - Implementation
@@ -276,12 +281,28 @@ public class Main {
       - `Set.of('a', 'b');` create an immutable set
       - `Set.copyOf(anotherSet);` returns an immutable shallow copy of the anotherSet
 
-
-- Queue
+- Queue (FIFO)
   - processing order.
   - Deque subinterface allow access both ends
   - Implementation
-    - Deque, LinkedList
+    - Deque
+    - LinkedList
+  - Specific methods:
+    - offer same as add
+    - peek same as get
+    - remove same as poll
+
+- Deque (double-ended queue [can remove from head and tail])
+  - Implementation
+    - LinkedList
+  - Specific methods:
+    - offerFist(E e) = add to the head
+    - offerLast(E e) = add to the tail
+    - peekFist(E e) = get head item
+    - peekLast(E e) = get tail item
+    - pollFist(E e) = remove and get head
+    - pollLast(E e) = remove and get tail
+
 - Map (Do not implement Collection interface, but still in collections framework)
   - key, value
   - do not allow duplicate keys
@@ -323,6 +344,10 @@ public class Main {
 
 - Comparator
 - Comparable
+
+> LinkedList implements both List and Deque
+
+> Deque implements Queue
 
 # Streams
 
