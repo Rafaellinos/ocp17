@@ -247,14 +247,35 @@ public class Main {
     - `List.of(varargs);` immutable list
     - `List.copyOf(collection);` immutable copy (shallow copy)
     - :warning: All the example above will produce error if try to add/remove
+    - `public void add(int index, E element)` add item and shift the rest to right (end)
+    - `public E get(int index)` get item by index
+    - `public E remove(int index)` removes the item and shift the rest to left (start)
+      - :warning: this remove() overloads the Collection, which uses the element instead of the index
+    - `public void replaceAlll(UnaryOperator<E> op)` applies UnaryOperator at each element and replace it
+      - e.g.: `listOfNumbers.replaceAll(x -> x*2)`
+    - `public E set(int index, E e)` replace item and return the original
+    - `public void sort(Comparator<? super E> c)` sort the list based on comparator
+    - `list.toArray`:
+      - `list.toArray()` defaults to object, so the return will be -> Object[] even if the list is ArrayList<String>
+      - `list.toArray(new String[0])` return String[] with the proper size by specifing zero (String[0])
+        - if u specify a longer size, the other value will be String null
+        - if u specify a smaller size, the parameter will be ignored and will the the specific size of the List
   - Specific Construtors:
     - `new ArrayList<String>(2);` create a list of 2 slots
 
 - Set
-  - No duplicates
+  - No duplicates, no order, no GET (must iterate)
     - Implementation
-      - Hashset
-      - TreeSet
+      - Hashset (HashTable)
+        - uses the hashCode() to retrieve
+        - Constant (o1) to add
+      - TreeSet (Tree data structure [root node, no cycle])
+        - sorted tree structure (always sorted)
+        - O(log n) for all operations
+    - Specific methods:
+      - `Set.of('a', 'b');` create an immutable set
+      - `Set.copyOf(anotherSet);` returns an immutable shallow copy of the anotherSet
+
 
 - Queue
   - processing order.
@@ -268,7 +289,6 @@ public class Main {
 - Collection constructors
   - `new ArrayList<String>();` empty collection
   - `new ArrayList<String>(anotherList);` passing another subtype of collection
-
 
 - Collection interface methods:
   - boolean add(E element)
@@ -329,3 +349,21 @@ public int equals(Object a, Object b) {
 > `var h = new ArrayList<Interger>(); h.add(null); int h1 = h.get(0); // NullPointerException!`
 
 > `var l = new ArrayList<>();` this is valid! produce an ArrayList<Object>
+
+```java
+
+public class Test {
+    public static void main(String... args) {
+        var lista = new ArrayList<Integer>();
+        lista.add(3);
+        lista.add(2);
+        lista.add(1); // [3, 2, 1]
+        lista.remove(2); // will remove by index, therefore item 1 -> [3, 2]
+        lista.remove(Integer.valueOf(2)); // will move by Integer class, therefore item 2 -> [3]
+        System.out.println(lista); // [3]
+    }
+}
+
+```
+
+> Get hash code -> `animals.forEach(x -> System.out.println(x.hashCode()));`
