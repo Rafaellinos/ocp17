@@ -1,6 +1,19 @@
-# Java intermediate topics
+# Collection framework and Generics
 
 - TODO skiped topics: Core Apis, Methods, Class Design, Beyond classes
+
+# To remember
+
+
+## Big O
+
+![big_oh_sheetsheet](/imgs/bigOsheetsheat.jpg)
+
+![big_oh_time_complexity](/imgs/big_oh_time_complexity.jpg)
+
+## Collection framework resume
+
+![collection_framework_tree](/imgs/java_collection_framework.jpg)
 
 # Lambda (or clojures)
 
@@ -303,9 +316,40 @@ public class Main {
     - pollFist(E e) = remove and get head
     - pollLast(E e) = remove and get tail
 
-- Map (Do not implement Collection interface, but still in collections framework)
-  - key, value
+- Map <K, V> (Do not implement Collection interface, but still in collections framework)
   - do not allow duplicate keys
+  - key, value
+  - Implementation
+    - TreeMap
+      - sorted tree structure (key sorted) like TreeSet
+    - HashMap (no order)
+      - Constant time for add/get
+      - uses hashcode() for keys
+  - Specific methods:
+    - `Map.of("key1", "value1", "key2", "value2");`
+    - `Map.ofEntries(Map.entry("key1", "value1"), Map.entry("key2", "value2"));` ideal
+    - `Map.copyOf(map);`
+    - `void clear()` remove all keys
+    - `boolean containsKey(Object key)`
+    - `boolean containsValue(Object Value)`
+    - `Set<Map.Entry<K, V>> entrySet()` get `Set` of key value
+    - `forEach(BiConsumer<K key, V value>)` to loop
+    - `V get(Object key)` get value by key or returns null
+    - `V getOrDefault(Object key, V defaultValue)`
+    - `boolean isEmpty()`
+    - `Set<K> keySet()` get all keys in a `Set`
+    - `V merge(K key, V value, Function(<V, V, V> func))`
+      - Sets the value based on the result of func
+      - Sets the value if the value is null
+    - `V put(K key, V value)`
+    - `V putIfAbsent(K key, V value)` returns null if value not set
+    - `V remove(Object key)`
+    - `V replace(K key, V value)` return original value or null
+    - `void replaceAll(BiFunction<K, V, V> func)` replace values based on the func return
+      - e.g.: `map.replaceAll((k, v) -> k + v);` all value will result in k+v, but the key remains
+    - `int size()`
+    - `Collection<V> values()` iterable of values
+  - 
 
 - Collection constructors
   - `new ArrayList<String>();` empty collection
