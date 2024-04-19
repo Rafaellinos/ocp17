@@ -158,12 +158,62 @@
 - Diamont operator <>
   - Right side can be omited (inferred)
 
+## Collection Sort
+
+> `Collection.sort()` no return, changes object by reference
+
+- Comparable (interface)
+  - Any object can implement it to sort the objects
+  - `interface Comparable<T> { int compareTo(T other);}`
+
+```java
+import java.util.*;
+
+public class Person implements Comparable<Person> {
+
+  private String name;
+  private Integer age;
+
+  // getters and setters ommited
+
+  @Override
+  public int compareTo(Person otherPerson) {
+    return age.compareTo(otherPerson.getAge());
+    // could be this.age - other.age
+    // -1, 0, 1
+    // less, equal, greater
+    // e.g.: if this.age < other.age -> -1
+  }
+
+  public static void main(String... args) {
+    List<Person> persons = new ArrayList<>();
+    persons.add(new Person("Rafael", 33));
+    persons.add(new Person("Yasmin", 25));
+    System.out.println(persons); // [Rafael, Yasmin]
+    Collections.sort(persons);
+    System.out.println(persons); // [Yasmin, Rafael]
+  }
+}
+
+```
+
+
 - Comparator
-- Comparable
+
+
+- Comparator
+
+
+
+> String is sorted based on Unicode character mapping
 
 > LinkedList implements both List and Deque
 
 > Deque implements Queue
+
+> If the Collection starts with `Hash`, it uses `hashCode()` method
+
+> :warning: 
 
 ## Examples
 
@@ -187,6 +237,37 @@ public class Test {
     }
 }
 
+```
+
+### Maps
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+// Map.merge example
+public class MapExample {
+  public static void main(String... args) {
+    Map<String, Integer> someMap = new HashMap<>();
+    someMap.put("nome", "Rafael");
+    someMap.put("idade", "33");
+
+    BiFunction<String, String, String> normalizeIfNoName = (originalValue, parameterValue) -> {
+      return (originalValue != null && !originalValue.isEmpty()) ? originalValue : parameterValue; 
+    };
+
+    someMap.merge("nome", "N/A", normalizeIfNoName);
+
+    System.out.println(someMap); // {nome=Rafael, idade=33}
+
+    someMap.put("nome", null);
+
+    someMap.merge("nome", "N/A", normalizeIfNoName);
+
+    System.out.println(someMap); // {nome=N/A, idade=33}
+
+  }
+}
 ```
 
 > Get hash code -> `animals.forEach(x -> System.out.println(x.hashCode()));`
