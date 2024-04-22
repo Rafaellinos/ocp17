@@ -163,9 +163,10 @@
 
 > `Collection.sort()` no return, changes object by reference
 
-- Comparable (interface)
-  - Any object can implement it to sort the objects
-  - `interface Comparable<T> { int compareTo(T other);}`
+### Comparable (interface)
+
+- Any object can implement it to sort the objects
+- `interface Comparable<T> { int compareTo(T other);}`
 
 ```java
 import java.util.*;
@@ -198,9 +199,70 @@ public class Person implements Comparable<Person> {
 
 ```
 
+### Comparator
 
-- Comparator
+- useful to sort a Collection of objects that do not implement `Comparable<T>` interface
+- Can be used to compare a different attribute than the used in `compareTo()` from comparable interface
 
+```java
+import java.util.*;
+
+// example of implementation with Comparable and Comparator
+public Computer implements Comparable<Computer> {
+  private int cpuCores;
+  private int ramMemoryInGBs;
+
+  public void setCpuCores(int cpuCores) {this.cpuCores = cpuCores};
+  public void setRamMemoryinGBs(int ramMemoryInGBs) {this.ramMemoryInGBs = ramMemoryInGBs};
+  public int getCpfuCores() {return this.cpuCores};
+  public int getRamMemoryinGBs() {return this.ramMemoryInGBs};
+
+  @Override
+  public int compareTo(Computer otherComputer) {
+    return this.cpuCores - otherComputer.getCpuCores();
+  }
+
+  public static void main(String... args) {
+    var pc1 = new Computer();
+    pc1.setRamMemoryInGBs(8);
+    pc1.setCpuCores(4);
+    
+    var pc2 = new Computer();
+    pc2.setRamMemoryInGBs(16);
+    pc2.setCpuCores(2);
+
+    List<Computer> listOfPcs = List.of(pc1, pc2);
+
+    // custom comparator class
+    Comparator<Computer> byRam = new Comparator<Computer>() {
+      @Override
+      public int compare(Computer pc1, Computer pc2) {
+        return pc1.getRamMemoryinGBs() - pc2.getRamMemoryinGBs();
+      }      
+    };
+
+    Collection.sort(listOfPcs); // [PC1(4), PC2(2)]
+    Collection.sort(listOfPcs, byRam); // [PC2(16), PC1(8)] 
+  }
+}
+```
+
+### Comparator vs Comparable
+
+| Specification    | Comparable<T> | Comparator         |
+|------------------|---------------|--------------------|
+| package Location | java.lang     | java.util          |
+| Must implement   | Yes           | No                 |
+| method name      | compareTo()   | compa              |
+| parameters       | <T> other       | <T> obj1, <T> obj2 |
+| lambda           | No            | Yes                |
+
+
+## Notes
+
+> in `compareTo()` method, handle `null` values to avoid `NullPointerExcetion`
+
+> Maintain `compareTo()` consistent with `equals()` method. If `compareTo()` return 0, the `equals()` should do the same (remeber, 0 in string.compareTo means equality)
 
 > String is sorted based on Unicode character mapping
 
@@ -211,6 +273,8 @@ public class Person implements Comparable<Person> {
 > If the Collection starts with `Hash`, it uses `hashCode()` method
 
 > :warning: Rule of thumb -> Always consider `Tree*` as sorted/compareTo and `Hash*` that call hashcode
+
+> :warning: `java.util.Comparator` vs `java.lang.Comparable` diff packs!
 
 ## Examples
 
