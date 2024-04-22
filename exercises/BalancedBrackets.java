@@ -52,6 +52,12 @@ class Stack {
     public String toString() {
         return nodes.toString();
     }
+
+    public void validDateStack() {
+        if (!nodes.isEmpty()) {
+            throw new RuntimeException("One or more bracks does not have enclosing");
+        }
+    }
 }
 
 class Node {
@@ -87,6 +93,7 @@ public class BalancedBrackets {
         for (int i = bracketsArray.length - 1; i >= 0 ; i--) {
             stack.add(new Node(bracketsArray[i]));
         }
+        stack.validDateStack();
         System.out.println(brackets);
         System.out.println(stack);
     }
