@@ -237,7 +237,7 @@ public Computer implements Comparable<Computer> {
     Comparator<Computer> byRam = new Comparator<Computer>() {
       @Override
       public int compare(Computer pc1, Computer pc2) {
-        return pc1.getRamMemoryinGBs() - pc2.getRamMemoryinGBs();
+        return pc1.getRamMemoryInGBs() - pc2.getRamMemoryInGBs();
       }      
     };
 
@@ -247,15 +247,23 @@ public Computer implements Comparable<Computer> {
 }
 ```
 
+- It is possible to implement `Comparator<T>` and implement `compare()` method
+
+```java
+// using chain of comparator to compore more fields
+Comparator<Computer> pc = Comparator.comparing(Computer::getCpuCores)
+  .thenComparingInt(Computer::getRamMemoryInGBs);
+```
+
 ### Comparator vs Comparable
 
-| Specification    | Comparable<T> | Comparator         |
-|------------------|---------------|--------------------|
-| package Location | java.lang     | java.util          |
-| Must implement   | Yes           | No                 |
-| method name      | compareTo()   | compa              |
-| parameters       | <T> other       | <T> obj1, <T> obj2 |
-| lambda           | No            | Yes                |
+| Specification    | Comparable<T> | Comparator           |
+|------------------|---------------|----------------------|
+| package Location | java.lang     | java.util            |
+| Must implement   | Yes           | No                   |
+| method name      | compareTo()   | compare()            |
+| parameters       | <T> other     | <T> obj1, <T> obj2   |
+| lambda           | No            | Yes                  |
 
 
 ## Notes
