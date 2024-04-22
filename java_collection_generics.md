@@ -55,7 +55,7 @@
     - `new ArrayList<String>(2);` create a list of 2 slots
 
 - Set
-  - No duplicates, no order, no GET (must iterate)
+  - No duplicates, no order, no GET (must iterate to get any value)
     - Implementation
       - Hashset (HashTable)
         - uses the hashCode() to retrieve
@@ -68,6 +68,7 @@
       - `Set.copyOf(anotherSet);` returns an immutable shallow copy of the anotherSet
 
 - Queue (FIFO)
+  - Allow duplicates, order, must add/remove in specific order
   - processing order.
   - Deque subinterface allow access both ends
   - Implementation
@@ -90,7 +91,7 @@
     - pollLast(E e) = remove and get tail
 
 - Map <K, V> (Do not implement Collection interface, but still in collections framework)
-  - do not allow duplicate keys
+  - Do not allow duplicate keys (allow for value)
   - key, value
   - Implementation
     - TreeMap
@@ -201,10 +202,6 @@ public class Person implements Comparable<Person> {
 - Comparator
 
 
-- Comparator
-
-
-
 > String is sorted based on Unicode character mapping
 
 > LinkedList implements both List and Deque
@@ -213,7 +210,7 @@ public class Person implements Comparable<Person> {
 
 > If the Collection starts with `Hash`, it uses `hashCode()` method
 
-> :warning: 
+> :warning: Rule of thumb -> Always consider `Tree*` as sorted/compareTo and `Hash*` that call hashcode
 
 ## Examples
 
@@ -271,3 +268,4 @@ public class MapExample {
 ```
 
 > Get hash code -> `animals.forEach(x -> System.out.println(x.hashCode()));`
+
