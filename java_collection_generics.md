@@ -63,6 +63,7 @@
       - TreeSet (Tree data structure [root node, no cycle])
         - sorted tree structure (always sorted)
         - O(log n) for all operations
+        - :warning: require implementation of `Comparable<T>` or u can pass `Comparator` as parameter
     - Specific methods:
       - `Set.of('a', 'b');` create an immutable set
       - `Set.copyOf(anotherSet);` returns an immutable shallow copy of the anotherSet
@@ -96,6 +97,7 @@
   - Implementation
     - TreeMap
       - sorted tree structure (key sorted) like TreeSet
+      - :warning: require implementation of `Comparable<T>` or u can pass `Comparator` as parameter
     - HashMap (no order)
       - Constant time for add/get
       - uses hashcode() for keys
@@ -161,7 +163,9 @@
 
 ## Collection Sort
 
-> `Collection.sort()` no return, changes object by reference
+- :warning: must implement `Comparable.compareTo` OR use `Comparator` as lambda
+- `Collection.sort()` no return, changes object by reference
+- `Collection.reverse()` also works
 
 ### Comparable (interface)
 
@@ -255,6 +259,18 @@ Comparator<Computer> pc = Comparator.comparing(Computer::getCpuCores)
   .thenComparingInt(Computer::getRamMemoryInGBs);
 ```
 
+- `comparing(function)` -> uses any Object (or autoboxed into Object)
+- `comparingDouble(function)`
+- `comparingInt(function)`
+- `comparingLong(function)`
+- `natualOrder()` -> sort by Comparable implementation `compareTo()`
+- `reverseOrder()` -> sort reversed by Comparable implementation `compareTo()`
+- `Comparator.comparing(Person::getId).reversed()` uses `reverseOrder(this)`
+- `thenComparing(function)` -> continue the chain of comparison (if previous passed)
+- `thenComparing*(function)` * = Double, Int and Long.
+
+> :warning: Be careful, `.sort()` will no compile if the class does not implement `Comparable`. Use `Comparator` lambda instead
+
 ### Comparator vs Comparable
 
 | Specification    | Comparable<T> | Comparator           |
@@ -265,6 +281,12 @@ Comparator<Computer> pc = Comparator.comparing(Computer::getCpuCores)
 | parameters       | <T> other     | <T> obj1, <T> obj2   |
 | lambda           | No            | Yes                  |
 
+## Binary search
+
+- required a sorted list
+- Signature: `Collections.binarySearch(<Collection>, <ObjectToFind>)`
+- Returns -1 if the result cannot be determined (not in the right order, descending or not sorted)
+- 
 
 ## Notes
 
@@ -340,4 +362,3 @@ public class MapExample {
 ```
 
 > Get hash code -> `animals.forEach(x -> System.out.println(x.hashCode()));`
-
