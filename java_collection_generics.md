@@ -1,4 +1,4 @@
-# Collection framework and Generics
+# Collection framework
 
 - TODO skiped topics: Core Apis, Methods, Class Design, Beyond classes
 
@@ -16,7 +16,7 @@
 
 ![collection_framework_tree](/imgs/java_collection_framework.jpg)
 
-# Collections and generics
+# Collections
 
 > Java collections framework, java.util
 
