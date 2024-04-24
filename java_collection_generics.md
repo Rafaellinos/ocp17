@@ -265,7 +265,7 @@ Comparator<Computer> pc = Comparator.comparing(Computer::getCpuCores)
 - `comparingLong(function)`
 - `natualOrder()` -> sort by Comparable implementation `compareTo()`
 - `reverseOrder()` -> sort reversed by Comparable implementation `compareTo()`
-- `Comparator.comparing(Person::getId).reversed()` uses `reverseOrder(this)`
+- `Comparator.comparing(Person::getId).reversed()` reversed uses `reverseOrder(this)`
 - `thenComparing(function)` -> continue the chain of comparison (if previous passed)
 - `thenComparing*(function)` * = Double, Int and Long.
 
@@ -362,3 +362,4 @@ public class MapExample {
 ```
 
 > Get hash code -> `animals.forEach(x -> System.out.println(x.hashCode()));`
+
