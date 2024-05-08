@@ -595,3 +595,4 @@ variable is just a reference
 > :warning: code after continue, break and return will not compile, even with with LABELs. Reason: unreacheble code
 
 > :warning: switch cannot be float, double or boolean
+

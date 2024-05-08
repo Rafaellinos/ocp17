@@ -152,8 +152,23 @@ public class TrickyBox<T> {
 }
 ```
 
-In the example above, the type of the method became what is passed as a parameter 
-in `getTrickyThing`.
+In the example above, the type of the method became what is passed as a parameter (String) in `getTrickyThing`.
 
+## Generics in Records
 
+```java
+public record RecordWithGenerics<T>(
+    T someGenericField,
+    String someStringField
+) {
+}
+```
+
+## Bounding Generic types
+
+- wild card generic type represented by (`?`)
+- Usages:
+    - `List<?> a = new ArrayList<String>();`
+    - `List<? extends Exception> a = new ArrayList<RuntimeException>();`
+    - `List<? super Exception> a = new ArrayList<Object>();`
 

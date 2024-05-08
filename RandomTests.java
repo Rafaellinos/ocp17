@@ -23,7 +23,7 @@ public class RandomTests {
     Predicate<String> checkName = n -> {
         return name.equalsIgnoreCase(n);
     };
-    name = "rafael"; // wont compile, name is not final or effectively final 
+    //name = "rafael"; // wont compile, name is not final or effectively final 
 
   }
   
