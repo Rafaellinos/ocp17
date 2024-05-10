@@ -2,7 +2,7 @@
 
 - TODO skiped topics: Core Apis, Methods, Class Design, Beyond classes
 
-# To remember
+## To remember
 
 - Some Topics to remember before reading the comments
 
@@ -16,7 +16,7 @@
 
 ![collection_framework_tree](/imgs/java_collection_framework.jpg)
 
-# Collections
+## Collections
 
 > Java collections framework, java.util
 
@@ -161,13 +161,13 @@
 - Diamont operator <>
   - Right side can be omited (inferred)
 
-## Collection Sort
+### Collection Sort
 
 - :warning: must implement `Comparable.compareTo` OR use `Comparator` as lambda
 - `Collection.sort()` no return, changes object by reference
 - `Collection.reverse()` also works
 
-### Comparable (interface)
+#### Comparable (interface)
 
 - Any object can implement it to sort the objects
 - `interface Comparable<T> { int compareTo(T other);}`
@@ -203,7 +203,7 @@ public class Person implements Comparable<Person> {
 
 ```
 
-### Comparator
+#### Comparator
 
 - useful to sort a Collection of objects that do not implement `Comparable<T>` interface
 - Can be used to compare a different attribute than the used in `compareTo()` from comparable interface
@@ -306,9 +306,9 @@ Comparator<Computer> pc = Comparator.comparing(Computer::getCpuCores)
 
 > :warning: `java.util.Comparator` vs `java.lang.Comparable` diff packs!
 
-## Examples
+### Examples
 
-### Lists
+#### Lists
 
 > `var h = new ArrayList<Interger>(); h.add(null); int h1 = h.get(0); // NullPointerException!`
 
@@ -330,7 +330,7 @@ public class Test {
 
 ```
 
-### Maps
+#### Maps
 
 ```java
 import java.util.HashMap;
@@ -362,4 +362,3 @@ public class MapExample {
 ```
 
 > Get hash code -> `animals.forEach(x -> System.out.println(x.hashCode()));`
-

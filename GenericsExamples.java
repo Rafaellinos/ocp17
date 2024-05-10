@@ -19,6 +19,5 @@ public class GenericsExamples {
     System.out.println(a instanceof String); // true
     var gr = new RecordGeneric<Integer>(33, "Rafael");
     System.out.println(gr);
-    
   }
 }

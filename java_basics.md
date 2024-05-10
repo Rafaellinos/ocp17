@@ -16,7 +16,6 @@
 - var: can be used as method name
 - case, new, this, var
 
-
 - final
   - constant, cannot reassign value
   - final String[] names = new String[]{"rafael", "yasmin"}; nomes = null; // error!
@@ -220,7 +219,6 @@ double ¥AnotherValue = 1500.123; // also compile!!
   - String s1, s2, s3 = "smassa"; // only last one has been initialized
   - double value1, double value2; // not legal, only 1 type per statement
 
-
 ## Instance variable (or field)
 
 - class variable = static field
@@ -236,7 +234,6 @@ double ¥AnotherValue = 1500.123; // also compile!!
 - var nome1 = "rafael", nome2 = "yasmin"; // not valid
 - var num1 = Long.parseLong("100"); // returns primitive
 - var num2 = Long.valueOf("100"); // returns Long object
-
 
 ## Methods
 
@@ -296,13 +293,11 @@ public class Teste {
 }
 ```
 
-
 ### Arithmetic Operators
 
 - includes increment/decrement operators
 - Modulus (remainder) = returns the remainder of the division
   - integer modulus results in floor value
-
 
 ### Rules for Numeric promotion
 
@@ -314,7 +309,6 @@ public class Teste {
   - promoted to int if binary arithmetic operator (+, -, %, etc)
 - All operands will end with the same type
   - the data type of the result will be the promoted operands
-
 
 ## Casting
 
@@ -388,7 +382,7 @@ boolean isAdult = (age <= 18) || (--age <= 18); // --age wont happen, only if us
 - && AND (if left is false, the rest will not be evaluated)
 - || OR (if the left side is true, the rest will not be evaluated)
 
-# Control flow / Decisions / If else for
+## Control flow / Decisions / If else for
 
 - if statement:
   - only if boolean extression evaluates to true
@@ -396,7 +390,7 @@ boolean isAdult = (age <= 18) || (--age <= 18); // --age wont happen, only if us
     - ex: `if (isAccountSuspended) blockMoney(); log.info("something")` something will be always logged
   - `int someInfo = 1; if(someInfo) {}` this code wont compile, only boolean expressions
 
-## Pattern variable
+### Pattern variable
 
 - avoid boilerplate code
 
@@ -434,8 +428,7 @@ public class Main {
 > `if(number instanceof Integer data || data.compareTo(1)<0);`
 > <- this code wont compile, because the OR will try to evaluate the data.compare, the compile cannot guaranntee the type
 
-
-## Switch statement
+### Switch statement
 
 - if not default provided and not case match, nothing will happen
 - if no `break;` provided, the entiry switch will be executed from first match until reachs a break, including default
@@ -443,7 +436,6 @@ public class Main {
   - boolean, float, double arent permited in switch
 - switch accepts :warning: literal, enum constants or final constants variables of same type
 - Case options are only valid if: :warning: final + literal, enum or literal 
-
 
 ```java
 final int b = 22;
@@ -453,7 +445,6 @@ switch (b) {
     case 7*8: // will compile! literal is known by the compiler
 }
 ```
-
 
 ```java
 void printDayOfWeek(int day) {
@@ -473,16 +464,15 @@ void printDayOfWeek(int day) {
 
 ```
 
-## Switch case expressions (java 14)
+### Switch case expressions (java 14)
 
 - avoid boilerplate from classic switch statements
 - Can return a value OR not
 - Cannot mix return void and return some value and type.
 - default case is required if not all cases covered OR no value is returned
-    - for enum, covering all cases doesnt required a default case
-    - if u add a new enum, the switch case without a default case will failt to compile
+  - for enum, covering all cases doesnt required a default case
+  - if u add a new enum, the switch case without a default case will failt to compile
 - returned data must be consistent in size, can return a short to a int, because it fits
-
 
 ```java
 int someVariable = 21;
@@ -496,7 +486,7 @@ int result = switch (someVariable) {
 }; // semicolumn at the end is mandatory
 ```
 
-## Loops (while, do/while, for, enhanced for (for each))
+### Loops (while, do/while, for, enhanced for (for each))
 
 - while
   - while (booleanExpression) {} <- structure
@@ -517,7 +507,7 @@ int result = switch (someVariable) {
 - adding multiple terms is valid in for loops.
   - e.g. for (int y=1, z=4; y < 7 && z != 99; y++) {}
 
-## Labels (if, switch, loops)
+### Labels (if, switch, loops)
 
 - labels are used to mark some statement
 - SNAKE_CASE
@@ -526,18 +516,18 @@ int result = switch (someVariable) {
 - u can use `break` in labels, like: `break OUTER_LOOP;`
 - :warning: without the label (optional), `break` will end the closest loop
 
-## Continue statment
+### Continue statment
 
 - can be used with labels aswell
 - `continue SOME_LABEL;`
 - continue goes to the nearest boolean expression, unless u use labels
 
-# Jars
+## Jars
 
 - creating jar: jar -cvf someJar.jar . "-cvf" stands for --create --verbose --file
 - specify the directory: jar -cvf someJar.jar -C target_dir .
 
-# Conventions
+## Conventions
 
 - declaration order:
   1. package
@@ -547,7 +537,7 @@ int result = switch (someVariable) {
   5. methods inside classes
 - PIC = package, import, class
 
-# Garbage collector (GC)
+## Garbage collector (GC)
 
 - All java object are stored in `heap memory` or free store
 - Object eligible for GC doesnt mean it will be immediately deleted by GC
@@ -561,7 +551,7 @@ Memory HEAP ( SomeObject, AnotherObject )
 SomeObject reference = new SomeObject();
 variable is just a reference
 
-# General knowledge
+## General knowledge
 
 > Size of boolean? depends on JVM implementation
 

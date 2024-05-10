@@ -87,15 +87,16 @@ class SpecialTruck extends Truck {
     }
 }
 ```
+
 ## Limitations
 
 - Cannot call `new T()`, not allowed
 - Create array of generic type
 - call `instanceof`. `List<Integer>` and `List<String` look the same for java (`List`)
-    - :warning: Remember, generics types are dropped
-- use primitive as generic type.
+  - :warning: Remember, generics types are dropped
+- Use primitive as generic type.
 - create `static` variable as a generic parameter
-    - the type is related to the instance of a class
+  - the type is related to the instance of a class
 
 ## Generics in methods level
 
@@ -146,6 +147,7 @@ public class TrickyBox<T> {
     public static void main(String... args) {
         TrickyBox<String> tbox = new TrickyBox<>();
         var a = tbox.getTrickyThing(123);
+        // var a = tbox.<Integer>getTrickyThing(123);
         System.out.println(a); // 123
         System.out.println(a instanceof Number); // true
     }
@@ -166,9 +168,8 @@ public record RecordWithGenerics<T>(
 
 ## Bounding Generic types
 
-- wild card generic type represented by (`?`)
+- Wild card generic type represented by (`?`)
 - Usages:
-    - `List<?> a = new ArrayList<String>();`
-    - `List<? extends Exception> a = new ArrayList<RuntimeException>();`
-    - `List<? super Exception> a = new ArrayList<Object>();`
-
+  - `List<?> a = new ArrayList<String>();`
+  - `List<? extends Exception> a = new ArrayList<RuntimeException>();`
+  - `List<? super Exception> a = new ArrayList<Object>();`
