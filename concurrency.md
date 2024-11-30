@@ -66,4 +66,30 @@ public class ThreadMain {
 
 ## Concurrency API
 
+- `ExecutorService service = Executors.newSingleThreadExecutor();`
+  - only one thread
+  - send tasks/threads by using `service.execute(RunnableClass)`
+  - must shutdown the service, or the executor will be running (`finally { service.shutdown(); }`)
+  - REMEMBER => `.shutdown()` doesnt stop any task that have been submitted
+  - REMEMBER => `isShutdown()` return true after the `.shutdown()` method being called
+  - REMEMBER => `.isTerminated()` returns true after ALL tasks/threads finishes
+  - `.shutdownNow()` attempts to stop all running tasks and discards any that have been not started
+
+- `ExecutorService` methods:
+  - `void execute(Runnable r)` run async, does not provide any return
+  - `Future<?> submit(Runnable r)` run async and return a Future object
+  - `Future<T> submit(Callable<T> task)` run async and return Future object
+  - `<T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)` execute and wait for all tasks to finish (keep same order submmited)
+  - `<T> T invokeAny(Collection<? extends Callable<T>> tasks)` executes and wait for at least one
+
+- `Future<?>` is an interface and is implemented by many SDKs
+  - `Future<?>` methods:
+  - `boolean isDone()`
+  - `boolean isCancelled()`
+  - `boolean cancel(boolean mayInterruptIfRunning)`
+  - `V get()` get result of task, wait until task done
+  - `V get(long timeout, TimeUnit unit)` can generate `TimeoutException`
+
+```java
+```
 
